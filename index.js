@@ -8,8 +8,10 @@ const corsOptions = {
   credentials: true
 };
 
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
 app.use(express.json());
+
+app.options('*', cors());
 
 app.post('/makejson', (req, res) => {
   console.log(req.body);
