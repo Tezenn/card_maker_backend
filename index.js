@@ -3,19 +3,13 @@ const fs = require('fs');
 const app = express();
 const cors = require('cors');
 
-var corsOptions = {
-  origin: 'https://modest-bhabha-9ae2df.netlify.com',
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+const corsOptions = {
+  origin: '*',
+  credentials: true
 };
 
 app.use(cors(corsOptions));
 app.use(express.json());
-
-/* app.all('/', function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-  next();
-}); */
 
 app.post('/makejson', (req, res) => {
   console.log(req.body);
