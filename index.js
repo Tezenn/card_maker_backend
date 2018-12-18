@@ -1,5 +1,5 @@
 const express = require('express');
-const fs = require('fs');
+const https = require('https');
 const app = express();
 const cors = require('cors');
 
@@ -25,4 +25,6 @@ app.get('/download', (req, res) => {
   storage.splice(0, 1);
 });
 
-app.listen(port, () => console.log(`server up on port ${port}`));
+const server = https.createServer(app);
+
+server.listen(process.env.PORT, () => console.log('https server on'));
