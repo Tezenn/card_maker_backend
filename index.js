@@ -6,13 +6,12 @@ const cors = require('cors');
 const port = process.env.PORT || 3100;
 
 const corsOptions = {
-  origin: '*',
+  origin: 'https://modest-bhabha-9ae2df.netlify.com',
   credentials: true
 };
 
 const storage = [];
 
-app.disable('x-powered-by');
 app.use(cors(corsOptions));
 app.use(express.json());
 
