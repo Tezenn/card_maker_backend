@@ -27,4 +27,4 @@ app.get('/download', (req, res) => {
 
 const server = https.createServer(app);
 
-server.listen(process.env.PORT, () => console.log('https server on'));
+server.listen(port, () => console.log('https server on'));
