@@ -3,7 +3,12 @@ const fs = require('fs');
 const app = express();
 const cors = require('cors');
 
-app.use(cors());
+const corsOptions = {
+  origin: '*',
+  'Access-Control-Allow-Credentials': true
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.post('/makejson', (req, res) => {
