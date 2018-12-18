@@ -16,6 +16,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.post('/makejson', (req, res) => {
+  console.log('until here all good');
   storage.push(req.body);
   res.status(201).send({ ok: 'ok' });
 });
