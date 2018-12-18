@@ -3,6 +3,8 @@ const fs = require('fs');
 const app = express();
 const cors = require('cors');
 
+const port = process.env.PORT || 3100;
+
 const corsOptions = {
   origin: 'https://modest-bhabha-9ae2df.netlify.com',
   credentials: true
@@ -30,4 +32,4 @@ app.get('/download', (req, res) => {
   res.download(__dirname + '/message.json', 'message.json');
 });
 
-app.listen(3100, () => console.log('server up'));
+app.listen(port, () => console.log('server up'));
