@@ -15,7 +15,7 @@ app.use(express.json());
 
 app.options('*', cors());
 
-app.get('/lol', (req, res) => res.send({ hey: 'yo' }));
+app.get('/lol', (req, res) => res.send('hi'));
 
 app.post('/makejson', (req, res) => {
   console.log(req.body);
