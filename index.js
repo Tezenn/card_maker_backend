@@ -13,6 +13,8 @@ app.use(express.json());
 
 app.options('*', cors());
 
+app.get('/lol', (req, res) => res.send({ hey: 'yo' }));
+
 app.post('/makejson', (req, res) => {
   console.log(req.body);
   fs.writeFile('message.json', JSON.stringify(req.body), err => {
