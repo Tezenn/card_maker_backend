@@ -4,14 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tezenn/card_maker_backend.git"
+  },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tezenn/card_maker_backend/issues"
+  },
+  "homepage": "https://github.com/Tezenn/card_maker_backend#readme",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.16.4"
+    "@koa/cors": "^2.2.2",
+    "koa": "^2.6.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0"
   }
 }

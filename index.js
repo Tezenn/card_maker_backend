@@ -1,33 +1,13 @@
-const express = require('express');
-const https = require('https');
-const app = express();
-const cors = require('cors');
+const Koa = require('koa');
+const cors = require('@koa/cors');
+const bodyParser = require('koa-bodyparser');
+const router = require('./router');
+const app = new Koa();
 
-const port = process.env.PORT || 3100;
+const PORT = process.env.PORT || 3100;
 
-const corsOptions = {
-  origin: 'https://modest-bhabha-9ae2df.netlify.com',
-  credentials: true
-};
+app.use(cors());
+app.use(bodyParser());
+app.use(router.routes());
 
-const storage = [':D'];
-
-app.use(cors(corsOptions));
-app.use(express.json());
-
-app.get('*', (req, res) => res.json(storage));
-
-app.post('/makejson', (req, res) => {
-  console.log('until here all good');
-  storage.push(req.body);
-  res.status(201).send({ ok: 'ok' });
-});
-
-/* app.get('/download', (req, res) => {
-  res.download(storage[0]);
-  storage.splice(0, 1);
-}); */
-
-const server = https.createServer(app);
-
-server.listen(port, () => console.log('https server on'));
+app.listen(PORT, () => console.log('server on'));
