@@ -10,10 +10,12 @@ const corsOptions = {
   credentials: true
 };
 
-const storage = [];
+const storage = [':D'];
 
 app.use(cors(corsOptions));
 app.use(express.json());
+
+app.get('*', res.json(storage));
 
 app.post('/makejson', (req, res) => {
   console.log('until here all good');
@@ -21,10 +23,10 @@ app.post('/makejson', (req, res) => {
   res.status(201).send({ ok: 'ok' });
 });
 
-app.get('/download', (req, res) => {
+/* app.get('/download', (req, res) => {
   res.download(storage[0]);
   storage.splice(0, 1);
-});
+}); */
 
 const server = https.createServer(app);
 
