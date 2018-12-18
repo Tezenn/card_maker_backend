@@ -3,12 +3,7 @@ const fs = require('fs');
 const app = express();
 const cors = require('cors');
 
-const corsOptions = {
-  origin: '*',
-  'Access-Control-Allow-Credentials': true
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 
 app.all('/', function(req, res, next) {
