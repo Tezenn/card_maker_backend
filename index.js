@@ -15,7 +15,7 @@ const storage = [':D'];
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.get('*', res.json(storage));
+app.get('*', (req, res) => res.json(storage));
 
 app.post('/makejson', (req, res) => {
   console.log('until here all good');
