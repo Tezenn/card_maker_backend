@@ -11,6 +11,12 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+app.all('/', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+  next();
+});
+
 app.post('/makejson', (req, res) => {
   console.log(req.body);
   fs.writeFile('message.json', JSON.stringify(req.body), err => {
