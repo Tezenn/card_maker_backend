@@ -12,6 +12,7 @@ const corsOptions = {
 
 const storage = [];
 
+app.disable('x-powered-by');
 app.use(cors(corsOptions));
 app.use(express.json());
 
