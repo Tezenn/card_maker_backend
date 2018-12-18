@@ -9,7 +9,9 @@ app.use(express.json());
 app.post('/makejson', (req, res) => {
   console.log(req.body);
   fs.writeFile('message.json', JSON.stringify(req.body), err => {
-    if (err) throw err;
+    if (err) {
+      res.send({ error: err });
+    }
     console.log('The file has been saved!');
     res.status(201).send({ ok: 'ok' });
   });
