@@ -10,26 +10,19 @@ const corsOptions = {
   credentials: true
 };
 
-//app.use(cors(corsOptions));
+const storage = [];
+
+app.use(cors());
 app.use(express.json());
 
-app.options('*', cors());
-
-app.get('/lol', (req, res) => res.send('hi'));
-
 app.post('/makejson', (req, res) => {
-  console.log(req.body);
-  fs.writeFile('message.json', JSON.stringify(req.body), err => {
-    if (err) {
-      res.send({ error: err });
-    }
-    console.log('The file has been saved!');
-    res.status(201).send({ ok: 'ok' });
-  });
+  storage.push(req.body);
+  res.status(201).send({ ok: 'ok' });
 });
 
 app.get('/download', (req, res) => {
-  res.download(__dirname + '/message.json', 'message.json');
+  res.download(storage[0]);
+  storage.splice(0, 1);
 });
 
-app.listen(port, () => console.log('server up'));
+app.listen(port, () => console.log(`server up on port ${port}`));
